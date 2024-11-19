@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">Super Tic Tac Toe</string>
+
+    <string name="TicTacToeText">Tic tac toe</string>
+    <!-- super tic tac toe activity -->
+    <string name="winText">Win %1$s</string>
+    <string name="drawText">Draw %1$s</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- super tic tac toe activity -->
+    <string name="main_play_simple">Play Simple</string>
+    <string name="main_play_super">Play Super</string>
+    <string name="main_create_room">Create Room</string>
+    <string name="main_play_online_switch">Play Online</string>
+    <string name="main_tic_tac_toe">Tic Tac Toe</string>
+    <string name="main_super">Super</string>
+    <string name="main_by_denys">by Denys</string>
+
+    <string name="ac_sign_up">Реєстрація</string>
+    <string name="ac_sign_in">Вхід</string>
+    <string name="ac_sign_out">Вихід</string>
+    <string name="Open">Open</string>
+    <string name="Close">Close</string>
+    <string name="not_reg">Player</string>
+
+    <string name="default_web_client_id">1056548523686-1agihana4t3qrb2fus77qs804avu151v.apps.googleusercontent.com</string>
+    <string name="email_hint">Email</string>
+    <string name="email_reset_wes_sent">Надіслано</string>
+    <string name="email_reset_email_massage">Для відноілення паролю вкажіть Email адресу!</string>
+    <string name="pass_hint">Password</string>
+    <string name="sign_in_action">Увійти</string>
+    <string name="sign_up_action">Зареєструватися</string>
+    <string name="forget_password">Забули пароль?</string>
+    <string name="sign_up_error">Не вдалося зареєструватися</string>
+    <string name="sign_in_error">Не вдалося увійти</string>
+    <string name="send_verification_email_error">Не вдалося відправити email для підтвердження</string>
+    <string name="send_verification_email_done">На вашу пошту біло відправлено силку для підтвердження вашого акаунту!</string>
+</resources>

@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "1056548523686",
+    "firebase_url": "https://tick-tack-toe-d93bb-default-rtdb.firebaseio.com",
+    "project_id": "tick-tack-toe-d93bb",
+    "storage_bucket": "tick-tack-toe-d93bb.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1056548523686:android:01e909c5aca856ca3c2e67",
+        "android_client_info": {
+          "package_name": "com.example.supertictactoe"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1056548523686-1agihana4t3qrb2fus77qs804avu151v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBx6ZKjx_3ZjVOF2b3CZo2lxKxnW1qT6g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1056548523686-1agihana4t3qrb2fus77qs804avu151v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1056548523686:android:499f8aaaa7bdea083c2e67",
+        "android_client_info": {
+          "package_name": "com.exemple.ticktacktoe"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1056548523686-1agihana4t3qrb2fus77qs804avu151v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBx6ZKjx_3ZjVOF2b3CZo2lxKxnW1qT6g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1056548523686-1agihana4t3qrb2fus77qs804avu151v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

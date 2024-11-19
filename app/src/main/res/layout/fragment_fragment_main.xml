@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.MainActivity">
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainerView2"
+        android:name="androidx.fragment.app.DialogFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background_main"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <TextView
+            android:id="@+id/TicTacToeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="124dp"
+            android:text="@string/TicTacToeText"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="50sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/main_by_denys"
+            android:textColor="@color/main_orange_text"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/TicTacToeText"
+            app:layout_constraintTop_toBottomOf="@+id/superText" />
+
+        <TextView
+            android:id="@+id/superText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/main_super"
+            android:textAllCaps="false"
+            android:textColor="@color/main_orange_text"
+            android:textSize="50sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/TicTacToeText"
+            app:layout_constraintStart_toStartOf="@+id/TicTacToeText"
+            app:layout_constraintTop_toBottomOf="@+id/TicTacToeText" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/bPlaySuper"
+            android:layout_width="250dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/button_main"
+            android:text="@string/main_play_super"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="@+id/bPlaySimple"
+            app:layout_constraintStart_toStartOf="@+id/bPlaySimple"
+            app:layout_constraintTop_toBottomOf="@+id/bPlaySimple" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/bPlaySimple"
+            android:layout_width="250dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="124dp"
+            android:background="@drawable/button_main"
+            android:text="@string/main_play_simple"
+            android:textColor="@color/white"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="@+id/TicTacToeText"
+            app:layout_constraintHorizontal_bias="0.571"
+            app:layout_constraintStart_toStartOf="@+id/TicTacToeText"
+            app:layout_constraintTop_toBottomOf="@+id/TicTacToeText" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/bRooms"
+            android:layout_width="250dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/button_main"
+            android:text="@string/main_create_room"
+            android:textColor="@color/white"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="@+id/bPlaySimple"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/bPlaySimple"
+            app:layout_constraintTop_toBottomOf="@+id/bPlaySuper" />
+
+        <FrameLayout
+            android:id="@+id/fragmentConteinerSimple"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <FrameLayout
+            android:id="@+id/fragmentConteinerSuper"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/textPlayOnline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/main_play_online_switch"
+            android:textColor="@color/main_orange_text"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/chip"
+            app:layout_constraintEnd_toStartOf="@+id/chip"
+            app:layout_constraintTop_toTopOf="@+id/chip" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/chip"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintEnd_toEndOf="@+id/bRooms"
+            app:layout_constraintHorizontal_bias="0.736"
+            app:layout_constraintStart_toStartOf="@+id/bRooms"
+            app:layout_constraintTop_toBottomOf="@+id/bRooms"
+            app:thumbTint="@color/white" />
+
+        <ImageButton
+            android:id="@+id/imageButtonAccount"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="@android:color/transparent"
+            android:importantForAccessibility="no"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/baseline_account_circle_24" />
+
+        <TextView
+            android:id="@+id/tvNameUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="@+id/imageButtonAccount"
+            app:layout_constraintStart_toStartOf="@+id/imageButtonAccount"
+            app:layout_constraintTop_toBottomOf="@+id/imageButtonAccount" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</FrameLayout>
