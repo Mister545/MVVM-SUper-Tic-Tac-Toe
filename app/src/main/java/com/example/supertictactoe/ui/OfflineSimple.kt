@@ -1,6 +1,7 @@
 package com.example.supertictactoe.ui
 
 import android.content.Intent
+import android.media.SoundPool
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -19,6 +20,8 @@ class OfflineSimple : DialogFragment() {
     private val gameRules = GameRules()
     private var arrSimple: MutableList<Int> = MutableList(9) { 0 }
     private val uiConfiguration = UiConfiguration()
+    private lateinit var soundPool: SoundPool
+    private var soundId: Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,8 +52,10 @@ class OfflineSimple : DialogFragment() {
     }
 
     private fun setupButtonListeners() {
+        soundCreate()
         for ((index, button) in buttonArr.withIndex()) {
             button.setOnClickListener {
+                playSound()
                 updateBoard(index, button)
             }
         }
@@ -88,28 +93,6 @@ class OfflineSimple : DialogFragment() {
         buttonArr.forEach { uiConfiguration.setBackgroundButtonsSimple(requireContext(), it) }
     }
 
-    private fun resetUi() {
-        buttonArr.forEach { it.text = "" }
-        initialization()
-    }
-//
-//    private fun replaceFragment(fragment: DialogFragment) {
-//        if (!parentFragmentManager.isStateSaved) {
-//            parentFragmentManager.beginTransaction()
-//                .replace(binding.fragmentContainerView3.id, fragment)
-//                .commit()
-//        }
-//    }
-
-    private fun removeFragment() {
-        val fragment = parentFragmentManager.findFragmentById(R.id.fragmentConteinerSuper)
-        if (fragment != null && !parentFragmentManager.isStateSaved) {
-            parentFragmentManager.beginTransaction()
-                .remove(fragment)
-                .commit()
-        }
-    }
-
     private fun getStep(list: MutableList<Int>): Boolean {
         var x = 0
         var o = 0
@@ -127,5 +110,23 @@ class OfflineSimple : DialogFragment() {
             0, 3, 5, 6, 9, 12 -> true
             else -> false
         }
+    }
+
+    private fun soundCreate(){
+        soundPool = SoundPool.Builder()
+            .setMaxStreams(1)
+            .build()
+        soundId = soundPool.load(requireContext(), R.raw.click_sound, 1)
+    }
+
+    private fun playSound() {
+        soundPool.play(
+            soundId, // ID звуку
+            1.0f,    // Ліва гучність (0.0 - 1.0)
+            1.0f,    // Права гучність (0.0 - 1.0)
+            1,       // Пріоритет (використовується, якщо багато звуків грають одночасно)
+            0,       // Кількість повторень (0 - один раз, -1 - безкінечно)
+            1.0f     // Швидкість відтворення (1.0 = нормальна швидкість)
+        )
     }
 }
