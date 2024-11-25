@@ -1,6 +1,7 @@
 package com.example.supertictactoe.ui
 
 import android.content.Intent
+import android.media.SoundPool
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
+import com.example.supertictactoe.R
 import com.example.supertictactoe.databinding.FragmentSuperTicTacToeBinding
 import com.example.supertictactoe.utils.GameRules
 import com.example.supertictactoe.utils.UiConfiguration
@@ -19,6 +21,8 @@ class SuperTicTacToe : DialogFragment() {
     private lateinit var buttonArrWithArr: List<List<Button>>
     private lateinit var buttonArrAll: List<Button>
     private val uiConfiguration = UiConfiguration()
+    private lateinit var soundPool: SoundPool
+    private var soundId: Int = 0
 
     private val viewModel: SuperTicTacToeViewModel by viewModels()
 
@@ -162,7 +166,10 @@ class SuperTicTacToe : DialogFragment() {
     }
 
     private fun updateUi() {
+        soundCreate()
         viewModel.gameState.observe(this) { gameState ->
+
+            playSound()
 
             gameState.data.forEachIndexed { index, ints ->
                 ints.forEachIndexed { index2, i ->
@@ -264,6 +271,24 @@ class SuperTicTacToe : DialogFragment() {
                 button.isClickable = false
             }
         }
+    }
+
+    private fun soundCreate(){
+        soundPool = SoundPool.Builder()
+            .setMaxStreams(1)
+            .build()
+        soundId = soundPool.load(requireContext(), R.raw.click_sound, 1)
+    }
+
+    private fun playSound() {
+        soundPool.play(
+            soundId, // ID звуку
+            1.0f,    // Ліва гучність (0.0 - 1.0)
+            1.0f,    // Права гучність (0.0 - 1.0)
+            1,       // Пріоритет (використовується, якщо багато звуків грають одночасно)
+            0,       // Кількість повторень (0 - один раз, -1 - безкінечно)
+            1.0f     // Швидкість відтворення (1.0 = нормальна швидкість)
+        )
     }
 }
 

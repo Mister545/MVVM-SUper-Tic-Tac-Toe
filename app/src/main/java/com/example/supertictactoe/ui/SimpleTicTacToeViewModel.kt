@@ -1,5 +1,7 @@
 package com.example.supertictactoe.ui
 
+import android.media.MediaPlayer
+import android.provider.MediaStore.Audio
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -36,6 +38,7 @@ class SimpleTicTacToeViewModel : ViewModel() {
     private fun listenerState() {
 
         firebaseService.getGameStateSimple(codeRoom.value!!) { myState ->
+
             gameState.value = myState
             winner.value = gameRules.checkWin(myState.data)
         }
@@ -92,6 +95,5 @@ class SimpleTicTacToeViewModel : ViewModel() {
     override fun onCleared() {
         super.onCleared()
         Log.d("ooo", "cleared")
-
     }
 }

@@ -1,6 +1,7 @@
 package com.example.supertictactoe.ui
 
 import android.content.Intent
+import android.media.SoundPool
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -25,6 +26,8 @@ class OfflineSuper : DialogFragment() {
     var nextBoardM = 10
     var isNextX = true
     private val uiConfiguration = UiConfiguration()
+    private lateinit var soundPool: SoundPool
+    private var soundId: Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -256,6 +259,7 @@ class OfflineSuper : DialogFragment() {
     }
 
     private fun enableBoardButtons(boardIndex: Int) {
+        soundCreate()
         buttonArrWithArr[boardIndex].forEachIndexed { index, button ->
             button.isClickable = true
             if (gameRules.checkRightPlace(boardIndex)) {
@@ -265,6 +269,7 @@ class OfflineSuper : DialogFragment() {
                 nextField = nextField(10) as ArrayList<Int>
             } else {
                 button.setOnClickListener {
+                    playSound()
                     updateBoard(boardIndex, index, button)
                     nextBoardM = index
                     nextField = nextField(index) as ArrayList<Int>
@@ -349,26 +354,6 @@ class OfflineSuper : DialogFragment() {
         buttonArrAll.forEach { uiConfiguration.setBackgroundButtonsSuper(requireContext(), it) }
     }
 
-    private fun replaceFragment(fragment: DialogFragment) {
-        // Перевірка чи активність не знищена і не завершується
-        if (!parentFragmentManager.isDestroyed) {
-            val fragmentTransaction = parentFragmentManager.beginTransaction()
-
-            // Перевірка чи транзакція безпечна (стан активності не був збережений)
-            if (!parentFragmentManager.isStateSaved) {
-                fragmentTransaction.replace(binding.fragmentContainerView.id, fragment)
-                fragmentTransaction.commit()
-            } else {
-                // Якщо стан активності був збережений, використовуйте commitAllowingStateLoss
-                fragmentTransaction.replace(binding.fragmentContainerView.id, fragment)
-                fragmentTransaction.commitAllowingStateLoss()
-            }
-        } else {
-            // Логування або інші дії, якщо транзакція не може бути виконана
-            println("Замінити фрагмент неможливо: активність знищена або завершується")
-        }
-    }
-
     private fun removeFragment() {
         val fragment = parentFragmentManager.findFragmentById(R.id.fragmentContainerView)
         if (fragment != null && !parentFragmentManager.isStateSaved) {
@@ -376,6 +361,24 @@ class OfflineSuper : DialogFragment() {
                 .remove(fragment)
                 .commit()
         }
+    }
+
+    private fun soundCreate(){
+        soundPool = SoundPool.Builder()
+            .setMaxStreams(1)
+            .build()
+        soundId = soundPool.load(requireContext(), R.raw.click_sound, 1)
+    }
+
+    private fun playSound() {
+        soundPool.play(
+            soundId, // ID звуку
+            1.0f,    // Ліва гучність (0.0 - 1.0)
+            1.0f,    // Права гучність (0.0 - 1.0)
+            1,       // Пріоритет (використовується, якщо багато звуків грають одночасно)
+            0,       // Кількість повторень (0 - один раз, -1 - безкінечно)
+            1.0f     // Швидкість відтворення (1.0 = нормальна швидкість)
+        )
     }
 }
 
